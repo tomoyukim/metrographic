@@ -1,5 +1,6 @@
 var t, t2;
 var railway = [];
+var trains = [];
 
 var MAP_SIZE_X = 2800;
 var MAP_SIZE_Y = 2100;
@@ -15,6 +16,29 @@ var socket = io.connect('http://192.168.33.10:3000');
 socket.on('trains', function(msg) {
     console.log('trains');
     console.log(msg);
+
+    trains = [];
+    for( var i=0; i < msg.length; i++){
+	var stations;
+	var fromStation, toStation;
+	for( var j=0; j < RAILWAY_DATA.length; j++){
+	    if(RAILWAY_DATA[j].odpt_railway == msg[i]['odpt:railway']){
+		stations = RAILWAY_DATA[j].stations;
+	    }
+	}
+	for( var k=0; k < stations.length; k++){
+	    if(stations[k].odpt_station == msg[i]['odpt:fromStation']){
+		console.log('from:' + stations[k].odpt_station);
+		fromStation = stations[k];
+	    }
+	    if(stations[k].odpt_station == msg[i]['odpt:toStation']){
+		console.log('to:' + stations[k].odpt_station);
+		toStation = stations[k];
+	    }
+	}
+	console.log(toStation);
+	trains.push(new Train(fromStation, toStation, msg[i]['odpt:trainNumber'], msg[i]['odpt:trainType'], msg[i]['odpt:delay'], "up"));
+    }
 });
 
 function preload() {
@@ -37,9 +61,9 @@ function draw() {
     for( var i=0; i < railway.length; i++){
 	railway[i].draw();
     }
-    t.draw();
-    t2.draw();
-
+    for( var j=0; j < trains.length; j++){
+	trains[j].draw();
+    }
 
     //title
     var titleX = 25;
