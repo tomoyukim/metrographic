@@ -11,6 +11,11 @@ var _y = 0;
 var prevX = -500;
 var prevY = -500;
 
+var socket = io.connect('http://192.168.33.10:3000');
+socket.on('trains', function(msg) {
+    console.log('trains');
+    console.log(msg);
+});
 
 function preload() {
 }
