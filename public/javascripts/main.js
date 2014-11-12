@@ -19,27 +19,30 @@ socket.on('trains', function(msg) {
 
     trains = [];
     for( var i=0; i < msg.length; i++){
-	var stations;
+	var stations = [];
 	var fromStation, toStation;
 	for( var j=0; j < RAILWAY_DATA.length; j++){
 	    if(RAILWAY_DATA[j].odpt_railway == msg[i]['odpt:railway']){
-		stations = RAILWAY_DATA[j].stations;
+		stations = stations.concat(RAILWAY_DATA[j].stations);
 	    }
 	}
-	for( var k=0; k < stations.length; k++){
-	    if(stations[k].odpt_station == msg[i]['odpt:fromStation']){
-		console.log('from:' + stations[k].odpt_station);
-		fromStation = stations[k];
-	    }
-	    if(stations[k].odpt_station == msg[i]['odpt:toStation']){
-		console.log('to:' + stations[k].odpt_station);
-		toStation = stations[k];
-	    }
-	}
-	console.log(toStation);
+
+	console.log(msg[i]['odpt:railway']);
+	console.log(msg[i]['odpt:fromStation']);
+	var fromStation = getStationData(msg[i]['odpt:fromStation'], stations);
+	var toStation = getStationData(msg[i]['odpt:toStation'], stations);
+
 	trains.push(new Train(fromStation, toStation, msg[i]['odpt:trainNumber'], msg[i]['odpt:trainType'], msg[i]['odpt:delay'], "up"));
     }
 });
+
+function getStationData(odpt_station, stationData) {
+    for( var i=0; i < stationData.length; i++){
+	if(stationData[i].odpt_station == odpt_station){
+	    return stationData[i];
+	}
+    }
+}
 
 function preload() {
 }

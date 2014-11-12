@@ -160,7 +160,7 @@ var RAILWAY_DATA = [
     },
     {
 	"name":"丸ノ内",
-	"odpt_railway":"odpt.Railway:TokyoMetro.MarunouchiBranch",
+	"odpt_railway":"odpt.Railway:TokyoMetro.Marunouchi",
 	"color":["246","46","54"],
 	"stations":[
             {

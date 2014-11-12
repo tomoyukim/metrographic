@@ -1,15 +1,14 @@
 Train = function(_from, _to, _trainId, _trainType, _delay, _direction) {
     var _x, _y;
 
-    //TODO: calcurating position was not work fine.
-    console.log('train_from:'+_from);
-    console.log('train_to:'+_to);
+    console.log('from:'+_from);
+    console.log('to:'+_to);
     if(_to === undefined){
 	_x = Number(_from.posX);
 	_y = Number(_from.posY);
     }else{
-	_x = Number(_from.posX) + Number(_to.posX) / 2;
-	_y = Number(_from.posY) + Number(_to.posY) / 2;
+	_x = (Number(_from.posX) + Number(_to.posX)) / 2;
+	_y = (Number(_from.posY) + Number(_to.posY)) / 2;
     }
     this.x = _x;
     this.y = _y;
