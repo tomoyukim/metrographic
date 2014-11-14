@@ -2,6 +2,7 @@
   <meta charset="UTF-8"/>
   <title>geographic subway powered by Tokyo Metro</title>
   <script language="javascript" src="javascripts/jquery-1.11.1.min.js"></script>
+  <script language="javascript" src="javascripts/jquery.animate-colors-min.js"></script>
   <script language="javascript" src="javascripts/p5.min.js"></script>
   <!--<script language="javascript" src="js/p5.dom.js"></script>-->
   <!-- <script language="javascript" src="js/p5.sound.js"></script> -->
@@ -16,7 +17,7 @@
     <div id="menu">
       <h2 id="title">METRO GRAPHIC</h2>
       <small>powered by Tokyo Metro</small>
-      <ul id="info">
+      <ul id="railway">
         <li>
           <a href="odpt.Railway:TokyoMetro.Ginza" class="select">
             <svg xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +25,7 @@
 		 viewBox="0 0 10 10" width="10" height="10">
               <rect x="0" y="1" width="9" height="9" fill="#ff9500" />
             </svg>
-          Ginza
+          銀座線
           </a>
         </li>
         <li>
@@ -34,7 +35,7 @@
 		 viewBox="0 0 10 10" width="10" height="10">
               <rect x="0" y="1" width="9" height="9" fill="#f62e36" />
             </svg>
-          Marunouchi
+          丸の内線
           </a>
         </li>
         <li>
@@ -44,7 +45,7 @@
 		 viewBox="0 0 10 10" width="10" height="10">
               <rect x="0" y="1" width="9" height="9" fill="#b5b5ac" />
             </svg>
-          Hibiya
+          日比谷線
           </a>
         </li>
         <li>
@@ -54,7 +55,7 @@
 		 viewBox="0 0 10 10" width="10" height="10">
               <rect x="0" y="1" width="9" height="9" fill="#009bbf" />
             </svg>
-          Tozai
+          東西線
           </a>
         </li>
         <li>
@@ -64,7 +65,7 @@
 		 viewBox="0 0 10 10" width="10" height="10">
               <rect x="0" y="1" width="9" height="9" fill="#00bb85" />
             </svg>
-          Chiyoda
+          千代田線
           </a>
         </li>
         <li>
@@ -74,7 +75,7 @@
 		 viewBox="0 0 10 10" width="10" height="10">
               <rect x="0" y="1" width="9" height="9" fill="#c1a470" />
             </svg>
-          Yurakucho
+          有楽町線
           </a>
         </li>
         <li>
@@ -84,7 +85,7 @@
 		 viewBox="0 0 10 10" width="10" height="10">
               <rect x="0" y="1" width="9" height="9" fill="#8f76d6" />
             </svg>
-          Hanzomon
+          半蔵門線
           </a>
         </li>
         <li>
@@ -94,7 +95,7 @@
 		 viewBox="0 0 10 10" width="10" height="10">
               <rect x="0" y="1" width="9" height="9" fill="#00ac9b" />
             </svg>
-          Namboku
+          南北線
           </a>
         </li>
         <li>
@@ -104,9 +105,17 @@
 		 viewBox="0 0 10 10" width="10" height="10">
               <rect x="0" y="1" width="9" height="9" fill="#9c5e31" />
             </svg>
-          Fukutoshin
+          副都心線
           </a>
         </li>
+	<li>
+	-
+	</li>
+	<li>
+          <a href="odpt.Railway:TokyoMetro.Fukutoshin" id="fullscreen">
+          拡大図
+          </a>
+	</li>
       </ul>
     </div>
 </body>

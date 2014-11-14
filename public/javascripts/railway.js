@@ -42,9 +42,11 @@ Railway.prototype.draw = function() {
 	var size = this.STATION_SIZE;
 	ellipse(this.stations[i].posX, this.stations[i].posY, size, size);
 
-	fill(230);
-	textSize(12);
-	text(this.stations[i].english, Number(this.stations[i].posX) + 10, Number(this.stations[i].posY) - 5);
+	if(!gFullScreen && !this.stations[i].label && this.stations[i].label === undefined){
+	    fill(230);
+	    textSize(12);
+	    text(this.stations[i].japanese, Number(this.stations[i].posX) + 10, Number(this.stations[i].posY) - 5);
+	}
     }
 
     //railway line

@@ -125,4 +125,22 @@ $(function(){
 	
         return false;
     });
+    $("#fullscreen").on('click',function(event){
+	gFullScreen = !gFullScreen;
+	if(gFullScreen){
+	    $(this).text("拡大図");
+	}else{
+	    $(this).text("俯瞰図");
+	}
+    });
+    
+    //menu animation
+    var on = function(){
+	$(this).stop().animate({'color':'#999999'},200);
+    };
+    var off = function(){
+	$(this).stop().animate({'color':'#ffffff'},1000);
+    };
+    $("#railway li a").hover(on,off);
 });
+

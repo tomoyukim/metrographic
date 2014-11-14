@@ -73,7 +73,7 @@ Train.prototype.draw = function() {
     translate(this.x, this.y);
     noStroke();
 
-    var col = color(100, 200, 255);
+    var col = color(0, 163, 217);
     if(this.delay > 0){
 	col = color(255, 100, 100);
     }
@@ -91,16 +91,18 @@ Train.prototype.draw = function() {
     fill(col, this.life);
     ellipse(0, 0, this.size, this.size);
 
-    fill(255);
-    textSize(12);
-    translate(10, 4);
-    text("TrainNumber: " + this.trainId, 10, 0);
-    text("TrainType: " + this.trainType, 10, 17);
-    text("Delay: ", 10, 34);
-    if(this.delay > 0){
-	fill(color(232,64,48));
+    if(!gFullScreen){
+	fill(255);
+	textSize(12);
+	translate(10, 4);
+	text("TrainNumber: " + this.trainId, 10, 0);
+	text("TrainType: " + this.trainType, 10, 17);
+	text("Delay: ", 10, 34);
+	if(this.delay > 0){
+	    fill(color(232,64,48));
+	}
+	text(this.delay, textWidth("Delay: ") + 10, 34);
     }
-    text(this.delay, textWidth("Delay: ") + 10, 34);
 
     pop();
 }

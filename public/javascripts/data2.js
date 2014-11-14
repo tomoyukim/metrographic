@@ -10,6 +10,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Ginza.Shibuya",
 		"posX":"790",
 		"posY":"1775",
+		"label":false,
 		"index":0
             },
             {
@@ -18,6 +19,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Ginza.OmoteSando",
 		"posX":"955",
 		"posY":"1610",
+		"label":false,
 		"index":1
             },
             {
@@ -34,6 +36,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Ginza.AoyamaItchome",
 		"posX":"1105",
 		"posY":"1460",
+		"label":false,
 		"index":3
             },
             {
@@ -42,6 +45,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Ginza.AkasakaMitsuke",
 		"posX":"1210",
 		"posY":"1460",
+		"label":false,
 		"index":4
             },
             {
@@ -50,6 +54,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Ginza.TameikeSanno",
 		"posX":"1310",
 		"posY":"1560",
+		"label":false,
 		"index":5
             },
             {
@@ -74,6 +79,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Ginza.Ginza",
 		"posX":"1560",
 		"posY":"1360",
+		"label":false,
 		"index":8
             },
             {
@@ -98,6 +104,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Ginza.Mitsukoshimae",
 		"posX":"1710",
 		"posY":"960",
+		"label":false,
 		"index":11
             },
             {
@@ -130,6 +137,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Ginza.Ueno",
 		"posX":"1760",
 		"posY":"360",
+		"label":false,
 		"index":15
             },
             {
@@ -193,6 +201,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.MarunouchiBranch.NakanoSakaue",
 		"posX":"490",
 		"posY":"1260",
+		"label":false,
 		"index":3
             }
 	]
@@ -272,6 +281,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Marunouchi.ShinjukuSanchome",
 		"posX":"790",
 		"posY":"1260",
+		"label":false,
 		"index":8
             },
             {
@@ -296,6 +306,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Marunouchi.Yotsuya",
 		"posX":"1110",
 		"posY":"1260",
+		"label":false,
 		"index":11
             },
             {
@@ -320,6 +331,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Marunouchi.Kasumigaseki",
 		"posX":"1460",
 		"posY":"1460",
+		"label":false,
 		"index":14
             },
             {
@@ -328,6 +340,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Marunouchi.Ginza",
 		"posX":"1560",
 		"posY":"1360",
+		"label":false,
 		"index":15
             },
             {
@@ -344,6 +357,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Marunouchi.Otemachi",
 		"posX":"1560",
 		"posY":"960",
+		"label":false,
 		"index":17
             },
             {
@@ -376,6 +390,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Marunouchi.Korakuen",
 		"posX":"1110",
 		"posY":"640",
+		"label":false,
 		"index":21
             },
             {
@@ -400,6 +415,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Marunouchi.Ikebukuro",
 		"posX":"790",
 		"posY":"640",
+		"label":false,
 		"index":24
             }
 	]
@@ -503,6 +519,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Hibiya.Kayabacho",
 		"posX":"1760",
 		"posY":"1110",
+		"label":false,
 		"index":11
             },
             {
@@ -575,6 +592,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Hibiya.KitaSenju",
 		"posX":"2170",
 		"posY":"150",
+		"label":false,
 		"index":20
             }
 	]
@@ -630,6 +648,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Tozai.Iidabashi",
 		"posX":"1110",
 		"posY":"960",
+		"label":false,
 		"index":5
             },
             {
@@ -638,6 +657,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Tozai.Kudanshita",
 		"posX":"1310",
 		"posY":"960",
+		"label":false,
 		"index":6
             },
             {
@@ -654,6 +674,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Tozai.Otemachi",
 		"posX":"1560",
 		"posY":"960",
+		"label":false,
 		"index":8
             },
             {
@@ -662,6 +683,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Tozai.Nihombashi",
 		"posX":"1710",
 		"posY":"1110",
+		"label":false,
 		"index":9
             },
             {
@@ -797,6 +819,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Chiyoda.MeijiJingumae",
 		"posX":"790",
 		"posY":"1610",
+		"label":false,
 		"index":2
             },
             {
@@ -805,6 +828,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Chiyoda.OmoteSando",
 		"posX":"950",
 		"posY":"1610",
+		"label":false,
 		"index":3
             },
             {
@@ -829,6 +853,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Chiyoda.KokkaiGijidomae",
 		"posX":"1360",
 		"posY":"1465",
+		"label":false,
 		"index":6
             },
             {
@@ -837,6 +862,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Chiyoda.Kasumigaseki",
 		"posX":"1460",
 		"posY":"1465",
+		"label":false,
 		"index":7
             },
             {
@@ -845,6 +871,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Chiyoda.Hibiya",
 		"posX":"1460",
 		"posY":"1360",
+		"label":false,
 		"index":8
             },
             {
@@ -861,6 +888,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Chiyoda.Otemachi",
 		"posX":"1560",
 		"posY":"960",
+		"label":false,
 		"index":10
             },
             {
@@ -1044,6 +1072,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Yurakucho.Iidabashi",
 		"posX":"1110",
 		"posY":"960",
+		"label":false,
 		"index":12
             },
             {
@@ -1052,6 +1081,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Yurakucho.Ichigaya",
 		"posX":"1110",
 		"posY":"1060",
+		"label":false,
 		"index":13
             },
             {
@@ -1068,6 +1098,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Yurakucho.Nagatacho",
 		"posX":"1310",
 		"posY":"1260",
+		"label":false,
 		"index":15
             },
             {
@@ -1171,6 +1202,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Hanzomon.Nagatacho",
 		"posX":"1310",
 		"posY":"1260",
+		"label":false,
 		"index":3
             },
             {
@@ -1425,6 +1457,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Fukutoshin.Wakoshi",
 		"posX":"50",
 		"posY":"405",
+		"label":false,
 		"index":0
             },
             {
@@ -1433,6 +1466,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Fukutoshin.ChikatetsuNarimasu",
 		"posX":"150",
 		"posY":"405",
+		"label":false,
 		"index":1
             },
             {
@@ -1441,6 +1475,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Fukutoshin.ChikatetsuAkatsuka",
 		"posX":"250",
 		"posY":"405",
+		"label":false,
 		"index":2
             },
             {
@@ -1449,6 +1484,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Fukutoshin.Heiwadai",
 		"posX":"350",
 		"posY":"405",
+		"label":false,
 		"index":3
             },
             {
@@ -1457,6 +1493,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Fukutoshin.Hikawadai",
 		"posX":"450",
 		"posY":"405",
+		"label":false,
 		"index":4
             },
             {
@@ -1465,6 +1502,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Fukutoshin.KotakeMukaihara",
 		"posX":"550",
 		"posY":"405",
+		"label":false,
 		"index":5
             },
             {
@@ -1473,6 +1511,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Fukutoshin.Senkawa",
 		"posX":"630",
 		"posY":"485",
+		"label":false,
 		"index":6
             },
             {
@@ -1481,6 +1520,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Fukutoshin.Kanamecho",
 		"posX":"710",
 		"posY":"565",
+		"label":false,
 		"index":7
             },
             {
@@ -1489,6 +1529,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Fukutoshin.Ikebukuro",
 		"posX":"790",
 		"posY":"645",
+		"label":false,
 		"index":8
             },
             {
@@ -1545,6 +1586,7 @@ var RAILWAY_DATA = [
 		"odpt_station":"odpt.Station:TokyoMetro.Fukutoshin.Shibuya",
 		"posX":"790",
 		"posY":"1770",
+		"label":false,
 		"index":15
             }
 	]
