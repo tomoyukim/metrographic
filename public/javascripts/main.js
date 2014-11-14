@@ -1,6 +1,7 @@
-var t, t2;
 var railway = [];
 var trains = [];
+var selected_railway = "odpt.Railway:TokyoMetro.Chiyoda";
+var data;
 
 var MAP_SIZE_X = 2800;
 var MAP_SIZE_Y = 2100;
@@ -13,12 +14,18 @@ var prevX = -500;
 var prevY = -500;
 
 var socket = io.connect('http://192.168.33.10:3000');
-socket.on('trains', function(msg) {
-    console.log('trains');
-    console.log(msg);
+socket.on('trains', updateTrains);
+
+function updateTrains(msg) {
+    data = msg;
 
     trains = [];
     for( var i=0; i < msg.length; i++){
+
+	if(selected_railway != msg[i]['odpt:railway']){
+	    continue;
+	}
+	
 	var stations = [];
 	var fromStation, toStation;
 	for( var j=0; j < RAILWAY_DATA.length; j++){
@@ -27,14 +34,12 @@ socket.on('trains', function(msg) {
 	    }
 	}
 
-	console.log(msg[i]['odpt:railway']);
-	console.log(msg[i]['odpt:fromStation']);
 	var fromStation = getStationData(msg[i]['odpt:fromStation'], stations);
 	var toStation = getStationData(msg[i]['odpt:toStation'], stations);
 
 	trains.push(new Train(fromStation, toStation, msg[i]['odpt:trainNumber'], msg[i]['odpt:trainType'], msg[i]['odpt:delay'], "up"));
     }
-});
+}
 
 function getStationData(odpt_station, stationData) {
     for( var i=0; i < stationData.length; i++){
@@ -49,8 +54,6 @@ function preload() {
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
-    t = new Train(450, windowHeight/2, "A2098S4", "LOCAL", 10, "up");
-    t2 = new Train(1150, 660, "A2098S4", "LOCAL", 0, "down");
 
     for( var i=0; i < RAILWAY_DATA.length; i++){
 	railway.push(new Railway(RAILWAY_DATA[i]));
@@ -69,7 +72,7 @@ function draw() {
     }
 
     //title
-    var titleX = 25;
+/*    var titleX = 25;
     var titleY = 50;
     noStroke();
     fill(230);
@@ -78,6 +81,12 @@ function draw() {
     text("TIME-GRAPHIC SUBWAY", titleX, titleY);
     textSize(12);
     text("powered by Tokyo Metro", titleX, titleY + 15);
+
+    var a = 0;
+    for( var i=0; i < 9; i++){
+	ellipse(35 + a, 90, 20, 20);
+	a += 30;
+    }*/
 }
 
 function windowResized() {
@@ -106,3 +115,14 @@ function mouseReleased() {
     prevY = gY;
 }
 
+$(function(){
+    $(".select").on('click',function(event){
+        event.preventDefault();
+        event.stopPropagation();
+
+	selected_railway = $(this).attr('href');
+	updateTrains(data);
+	
+        return false;
+    });
+});

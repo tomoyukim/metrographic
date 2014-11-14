@@ -1,8 +1,6 @@
 Train = function(_from, _to, _trainId, _trainType, _delay, _direction) {
     var _x, _y;
 
-    console.log('from:'+_from);
-    console.log('to:'+_to);
     if(_to === undefined){
 	_x = Number(_from.posX);
 	_y = Number(_from.posY);

@@ -1,6 +1,7 @@
 <head>
   <meta charset="UTF-8"/>
   <title>geographic subway powered by Tokyo Metro</title>
+  <script language="javascript" src="javascripts/jquery-1.11.1.min.js"></script>
   <script language="javascript" src="javascripts/p5.min.js"></script>
   <!--<script language="javascript" src="js/p5.dom.js"></script>-->
   <!-- <script language="javascript" src="js/p5.sound.js"></script> -->
@@ -9,7 +10,103 @@
   <script language="javascript" src="javascripts/railway.js"></script>
   <script language="javascript" src="javascripts/train.js"></script>
   <script language="javascript" src="javascripts/main.js"></script>
-  <style> body {padding: 0; margin: 0; background-color: black;} </style>
+  <link href="/stylesheets/style.css" rel="stylesheet"/>
 </head>
 <body>
+    <div id="menu">
+      <h2 id="title">METRO GRAPHIC</h2>
+      <small>powered by Tokyo Metro</small>
+      <ul id="info">
+        <li>
+          <a href="odpt.Railway:TokyoMetro.Ginza" class="select">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink"
+		 viewBox="0 0 10 10" width="10" height="10">
+              <rect x="0" y="1" width="9" height="9" fill="#ff9500" />
+            </svg>
+          Ginza
+          </a>
+        </li>
+        <li>
+          <a href="odpt.Railway:TokyoMetro.Marunouchi" class="select">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink"
+		 viewBox="0 0 10 10" width="10" height="10">
+              <rect x="0" y="1" width="9" height="9" fill="#f62e36" />
+            </svg>
+          Marunouchi
+          </a>
+        </li>
+        <li>
+          <a href="odpt.Railway:TokyoMetro.Hibiya" class="select">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink"
+		 viewBox="0 0 10 10" width="10" height="10">
+              <rect x="0" y="1" width="9" height="9" fill="#b5b5ac" />
+            </svg>
+          Hibiya
+          </a>
+        </li>
+        <li>
+          <a href="odpt.Railway:TokyoMetro.Tozai" class="select">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink"
+		 viewBox="0 0 10 10" width="10" height="10">
+              <rect x="0" y="1" width="9" height="9" fill="#009bbf" />
+            </svg>
+          Tozai
+          </a>
+        </li>
+        <li>
+          <a href="odpt.Railway:TokyoMetro.Chiyoda" class="select">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink"
+		 viewBox="0 0 10 10" width="10" height="10">
+              <rect x="0" y="1" width="9" height="9" fill="#00bb85" />
+            </svg>
+          Chiyoda
+          </a>
+        </li>
+        <li>
+          <a href="odpt.Railway:TokyoMetro.Yurakucho" class="select">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink"
+		 viewBox="0 0 10 10" width="10" height="10">
+              <rect x="0" y="1" width="9" height="9" fill="#c1a470" />
+            </svg>
+          Yurakucho
+          </a>
+        </li>
+        <li>
+          <a href="odpt.Railway:TokyoMetro.Hanzomon" class="select">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink"
+		 viewBox="0 0 10 10" width="10" height="10">
+              <rect x="0" y="1" width="9" height="9" fill="#8f76d6" />
+            </svg>
+          Hanzomon
+          </a>
+        </li>
+        <li>
+          <a href="odpt.Railway:TokyoMetro.Namboku" class="select">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink"
+		 viewBox="0 0 10 10" width="10" height="10">
+              <rect x="0" y="1" width="9" height="9" fill="#00ac9b" />
+            </svg>
+          Namboku
+          </a>
+        </li>
+        <li>
+          <a href="odpt.Railway:TokyoMetro.Fukutoshin" class="select">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink"
+		 viewBox="0 0 10 10" width="10" height="10">
+              <rect x="0" y="1" width="9" height="9" fill="#9c5e31" />
+            </svg>
+          Fukutoshin
+          </a>
+        </li>
+      </ul>
+    </div>
 </body>
