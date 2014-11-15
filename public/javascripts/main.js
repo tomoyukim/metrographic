@@ -1,6 +1,7 @@
 var railway = [];
 var trains = [];
 var selected_railway = "odpt.Railway:TokyoMetro.Ginza";
+var selected_direction = ["odpt.RailDirection:TokyoMetro.Shibuya"];
 var data;
 
 var MAP_SIZE_X = 2800;
@@ -44,13 +45,18 @@ function updateTrains(msg) {
 	    terminalStation = terminalStation.japanese;
 	}
 	var odpt_railwayDirection = msg[i]['odpt:railDirection'];
-	trains.push(new Train(fromStation,
-			      toStation,
-			      msg[i]['odpt:trainNumber'],
-			      RAILWAY_DIRECTION_DATA[odpt_railwayDirection],
-			      terminalStation,
-			      msg[i]['odpt:delay'],
-			      msg[i]['dc:date']));
+	//TODO:check selected direction
+	for( var k=0; k < selected_direction.length; k++){
+	    if(odpt_railwayDirection == selected_direction[k]){
+		trains.push(new Train(fromStation,
+				      toStation,
+				      msg[i]['odpt:trainNumber'],
+				      RAILWAY_DIRECTION_DATA[odpt_railwayDirection],
+				      terminalStation,
+				      msg[i]['odpt:delay'],
+				      msg[i]['dc:date']));
+	    }
+	}
     }
 }
 
@@ -87,23 +93,6 @@ function draw() {
     for( var j=0; j < trains.length; j++){
 	trains[j].draw();
     }
-
-    //title
-/*    var titleX = 25;
-    var titleY = 50;
-    noStroke();
-    fill(230);
-    textFont('Helvetica');
-    textSize(32);
-    text("TIME-GRAPHIC SUBWAY", titleX, titleY);
-    textSize(12);
-    text("powered by Tokyo Metro", titleX, titleY + 15);
-
-    var a = 0;
-    for( var i=0; i < 9; i++){
-	ellipse(35 + a, 90, 20, 20);
-	a += 30;
-    }*/
 }
 
 function windowResized() {
@@ -138,6 +127,8 @@ $(function(){
         event.stopPropagation();
 
 	selected_railway = $(this).attr('href');
+	selected_direction = $(this).attr('data-dr').split(',');
+	console.log(selected_direction);
 	updateTrains(data);
 	
         return false;
