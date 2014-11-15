@@ -14,7 +14,7 @@ var _y = 0;
 var prevX = -500;
 var prevY = -500;
 
-var socket = io.connect('http://192.168.33.10:3000');
+var socket = io();
 socket.on('trains', updateTrains);
 
 function updateTrains(msg) {
