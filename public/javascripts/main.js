@@ -91,7 +91,7 @@ function draw() {
 	railway[i].draw();
     }
     var labelX_offset = 230;
-    var labelY = windowHeight - 60;//710;//50;
+    var labelY = windowHeight - 60;
     for( var j=0; j < trains.length; j++){
 	if(j/6 == 1){ //line2
 	    labelX_offset = 460;
@@ -133,24 +133,19 @@ function mouseReleased() {
 }
 
 $(function(){
+    $('#menu ul#railway li a').click(function(e){
+	$('#menu ul#railway li').removeClass("selected");
+	$(this).parent('li').addClass("selected");
+    });
     $(".select").on('click',function(event){
         event.preventDefault();
         event.stopPropagation();
 
 	selected_railway = $(this).attr('href');
 	selected_direction = $(this).attr('data-dr').split(',');
-	console.log(selected_direction);
 	updateTrains(data);
 	
         return false;
-    });
-    $("#fullscreen").on('click',function(event){
-	gFullScreen = !gFullScreen;
-	if(gFullScreen){
-	    $(this).text("拡大図");
-	}else{
-	    $(this).text("俯瞰図");
-	}
     });
     
     //menu animation

@@ -99,7 +99,10 @@ Train.prototype.showInfo = function(_labelX, _labelY) {
     rect(-5,-15,220,60);
 
     fill(255);
+    textStyle(BOLD);
     text(this.trainNumber, 0, 0);
+    textStyle(NORMAL);
+    fill(220);
     text(this.trainDirection + " " + this.terminalStation + "行き", 0, 17);
     if(this.delay > 0){
 	fill(color(232,64,48));
