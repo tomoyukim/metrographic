@@ -1,4 +1,4 @@
-Train = function(_from, _to, _trainId, _trainType, _delay, _direction) {
+Train = function(_from, _to, _trainDirection, _terminalStation, _delay, _direction) {
     var _x, _y;
 
     if(_to === undefined){
@@ -10,8 +10,8 @@ Train = function(_from, _to, _trainId, _trainType, _delay, _direction) {
     }
     this.x = _x;
     this.y = _y;
-    this.trainId = _trainId;
-    this.trainType = _trainType;
+    this.trainDirection = _trainDirection;
+    this.terminalStation = _terminalStation;
     this.delay = _delay;
     this.direction = _direction;
     this.life = this.LIFE;
@@ -95,13 +95,14 @@ Train.prototype.draw = function() {
 	fill(255);
 	textSize(12);
 	translate(10, 4);
-	text("TrainNumber: " + this.trainId, 10, 0);
-	text("TrainType: " + this.trainType, 10, 17);
-	text("Delay: ", 10, 34);
+	text(this.trainDirection, 10, 0);
+	text(this.terminalStation + "行き", 10, 17);
 	if(this.delay > 0){
 	    fill(color(232,64,48));
+	    text(this.delay + "分遅れ"　+ "2014.11.16 12:21現在", 10, 34);
+	} else {
+	    text("定刻" + " (2014.11.16 12:21現在)", 10, 34);
 	}
-	text(this.delay, textWidth("Delay: ") + 10, 34);
     }
 
     pop();

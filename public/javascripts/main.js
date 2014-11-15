@@ -36,8 +36,20 @@ function updateTrains(msg) {
 
 	var fromStation = getStationData(msg[i]['odpt:fromStation'], stations);
 	var toStation = getStationData(msg[i]['odpt:toStation'], stations);
-
-	trains.push(new Train(fromStation, toStation, msg[i]['odpt:trainNumber'], msg[i]['odpt:trainType'], msg[i]['odpt:delay'], "up"));
+	var terminalStation = getStationData(msg[i]['odpt:terminalStation'],stations);
+	if(terminalStation === undefined){
+	    var ts = msg[i]['odpt:terminalStation'];
+	    terminalStation = OTHER_STATION_DATA[ts];
+	} else {
+	    terminalStation = terminalStation.japanese;
+	}
+	var odpt_railwayDirection = msg[i]['odpt:railDirection'];
+	trains.push(new Train(fromStation,
+			      toStation,
+			      RAILWAY_DIRECTION_DATA[odpt_railwayDirection],
+			      terminalStation,
+			      msg[i]['odpt:delay'],
+			      "up"));
     }
 }
 
@@ -47,6 +59,10 @@ function getStationData(odpt_station, stationData) {
 	    return stationData[i];
 	}
     }
+}
+
+function getRailwayDirection(odpt_railwayDirection) {
+    return 
 }
 
 function preload() {

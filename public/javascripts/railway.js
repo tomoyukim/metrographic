@@ -33,7 +33,17 @@ Railway.prototype.draw = function() {
     //title area
     translate(0, 100);
 
-    
+    //railway line
+    noFill();
+    stroke(this.color);
+    strokeWeight(2);
+    //stroke(255);
+    beginShape(LINES);
+    for( var i=0; i < this.stations.length; i++){
+	vertex(this.stations[i].posX, this.stations[i].posY);
+    }
+    endShape();
+
     //station point
     for( var i=0; i < this.stations.length; i++){
 	noStroke();
@@ -49,15 +59,5 @@ Railway.prototype.draw = function() {
 	}
     }
 
-    //railway line
-    noFill();
-    stroke(this.color);
-    strokeWeight(2);
-    //stroke(255);
-    beginShape(LINES);
-    for( var i=0; i < this.stations.length; i++){
-	vertex(this.stations[i].posX, this.stations[i].posY);
-    }
-    endShape();
     pop();
 }
