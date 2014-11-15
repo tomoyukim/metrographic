@@ -90,8 +90,19 @@ function draw() {
     for( var i=0; i < railway.length; i++){
 	railway[i].draw();
     }
+    var labelX_offset = 230;
+    var labelY = windowHeight - 60;//710;//50;
     for( var j=0; j < trains.length; j++){
+	if(j/6 == 1){ //line2
+	    labelX_offset = 460;
+	    labelY = windowHeight - 60;
+	} else if (j/6 == 2) {//line3(max)
+	    labelX_offset = 690;
+	    labelY = windowHeight - 60;
+	}
 	trains[j].draw();
+	trains[j].showInfo(windowWidth - labelX_offset, labelY);
+	labelY -= 65;
     }
 }
 
