@@ -1655,7 +1655,7 @@ var OTHER_STATION_DATA = {
     "odpt.Station:Odakyu.Odawara.HakoneYumoto":"箱根湯本",
     "odpt.Station:Odakyu.Odawara.Ebina":"海老名",
     "odpt.Station:Tobu.Nikko.MinamiKurihashi":"南栗橋",
-    "odpt.Station:Tobu.Isesaki.Kuki":"久喜 　",
+    "odpt.Station:Tobu.Isesaki.Kuki":"久喜",
     "odpt.Station:Tobu.Isesaki.Takenotsuka":"竹ノ塚",
     "odpt.Station:Tobu.Isesaki.KitaKasukabe":"北春日部",
     "odpt.Station:Tobu.Isesaki.KitaKoshigaya":"北越谷",

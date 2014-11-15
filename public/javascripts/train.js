@@ -1,4 +1,4 @@
-Train = function(_from, _to, _trainDirection, _terminalStation, _delay) {
+Train = function(_from, _to, _trainNumber, _trainDirection, _terminalStation, _delay, _date) {
     var _x, _y;
 
     if(_to === undefined){
@@ -9,16 +9,28 @@ Train = function(_from, _to, _trainDirection, _terminalStation, _delay) {
 	_y = (Number(_from.posY) + Number(_to.posY)) / 2;
 
 	//calcurate direction angle
-	dx = Number(_from.posX) - Number(_to.posX);
-	dy = Number(_from.posY) - Number(_to.posY);
-	this.theta = atan(dy/dx);
-	this.direction = dx < 0 ? (HALF_PI - this.theta) : 0;
+	dx = Number(_to.posX) - Number(_from.posX);
+	dy = Number(_to.posY) - Number(_from.posY);
+	this.theta = atan(dy/abs(dx));
+	if(dx < 0 && this.theta < 0){
+	    this.theta = -(PI - abs(this.theta));
+	} else if (dx < 0 && this.theta >= 0) {
+	    this.theta = (PI - this.theta);
+	} else {
+	    // nothing
+	}
+	//this.direction = dx < 0 ? 0 : 2*(HALF_PI - this.theta);
     }
     this.x = _x;
     this.y = _y;
+    this.trainNumber = _trainNumber;
     this.trainDirection = _trainDirection;
     this.terminalStation = _terminalStation;
     this.delay = _delay;
+    var date = new Date(_date);
+    this.date = "(" + date.getFullYear() + "/" + (Number(date.getMonth()) + 1) + "/" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + " 現在)";
+    this.labelX = -20;
+    this.labelY = 16;
     this.life = this.LIFE;
     this.size = this.SIZE;
 }
@@ -44,10 +56,35 @@ Train.prototype.blink = function() {
 Train.prototype.arrow = function() {
     push();
 
-    if(this.direction){
-	rotate(this.theta );
+    if(this.theta !== undefined){
+	rotate(this.theta);
 	translate(10, 0);
 	triangle(0,5,8.6,0,0,-5);
+    }
+
+    pop();
+}
+
+Train.prototype.showLabel = function() {
+    push();
+
+    textSize(12);
+    translate(this.labelX, this.labelY);
+
+    //TODO:remove.only for debug
+    //fill(0, 127);
+    //rect(-5,-15,200,55);
+
+    fill(255);
+    //text(this.trainNumber, 0, 0);
+
+    text(this.trainDirection, 0, 0);
+    text(this.terminalStation + "行き", 0, 17);
+    if(this.delay > 0){
+	fill(color(232,64,48));
+	text(this.delay + "分遅れ "　+ this.date, 0, 34);
+    } else {
+	text("定刻 " + this.date, 0, 34);
     }
 
     pop();
@@ -97,18 +134,15 @@ Train.prototype.draw = function() {
     ellipse(0, 0, this.size, this.size);
 
     if(!gFullScreen){
-	fill(255);
-	textSize(12);
-	translate(10, 4);
-	text(this.trainDirection, 10, 0);
-	text(this.terminalStation + "行き", 10, 17);
-	if(this.delay > 0){
-	    fill(color(232,64,48));
-	    text(this.delay + "分遅れ"　+ "2014.11.16 12:21現在", 10, 34);
-	} else {
-	    text("定刻" + " (2014.11.16 12:21現在)", 10, 34);
-	}
+	/*
+	stroke(color(0, 163, 217));
+	line(0, 0, this.labelX, this.labelY);
+
+	noStroke();
+	*/
+	this.showLabel();
     }
 
     pop();
+
 }

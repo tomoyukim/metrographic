@@ -1,6 +1,6 @@
 var railway = [];
 var trains = [];
-var selected_railway = "odpt.Railway:TokyoMetro.Chiyoda";
+var selected_railway = "odpt.Railway:TokyoMetro.Ginza";
 var data;
 
 var MAP_SIZE_X = 2800;
@@ -46,9 +46,11 @@ function updateTrains(msg) {
 	var odpt_railwayDirection = msg[i]['odpt:railDirection'];
 	trains.push(new Train(fromStation,
 			      toStation,
+			      msg[i]['odpt:trainNumber'],
 			      RAILWAY_DIRECTION_DATA[odpt_railwayDirection],
 			      terminalStation,
-			      msg[i]['odpt:delay']));
+			      msg[i]['odpt:delay'],
+			      msg[i]['dc:date']));
     }
 }
 
