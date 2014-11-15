@@ -1,4 +1,4 @@
-Train = function(_from, _to, _trainDirection, _terminalStation, _delay, _direction) {
+Train = function(_from, _to, _trainDirection, _terminalStation, _delay) {
     var _x, _y;
 
     if(_to === undefined){
@@ -7,13 +7,18 @@ Train = function(_from, _to, _trainDirection, _terminalStation, _delay, _directi
     }else{
 	_x = (Number(_from.posX) + Number(_to.posX)) / 2;
 	_y = (Number(_from.posY) + Number(_to.posY)) / 2;
+
+	//calcurate direction angle
+	dx = Number(_from.posX) - Number(_to.posX);
+	dy = Number(_from.posY) - Number(_to.posY);
+	this.theta = atan(dy/dx);
+	this.direction = dx < 0 ? (HALF_PI - this.theta) : 0;
     }
     this.x = _x;
     this.y = _y;
     this.trainDirection = _trainDirection;
     this.terminalStation = _terminalStation;
     this.delay = _delay;
-    this.direction = _direction;
     this.life = this.LIFE;
     this.size = this.SIZE;
 }
@@ -38,13 +43,13 @@ Train.prototype.blink = function() {
 
 Train.prototype.arrow = function() {
     push();
-    if(this.direction == "up"){
-	translate(0, -10);
-	triangle(5,0,0,-8.6,-5,0);
-    } else { //down
-	translate(0, 10);
-	triangle(5,0,0,8.6,-5,0);
+
+    if(this.direction){
+	rotate(this.theta );
+	translate(10, 0);
+	triangle(0,5,8.6,0,0,-5);
     }
+
     pop();
 }
 

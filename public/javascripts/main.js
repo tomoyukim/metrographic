@@ -48,8 +48,7 @@ function updateTrains(msg) {
 			      toStation,
 			      RAILWAY_DIRECTION_DATA[odpt_railwayDirection],
 			      terminalStation,
-			      msg[i]['odpt:delay'],
-			      "up"));
+			      msg[i]['odpt:delay']));
     }
 }
 
