@@ -28,9 +28,9 @@ Train = function(_from, _to, _trainNumber, _trainDirection, _terminalStation, _d
     this.terminalStation = _terminalStation;
     this.delay = _delay;
     var date = new Date(_date);
-    this.date = "(" + date.getFullYear() + "/" + (Number(date.getMonth()) + 1) + "/" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + " 現在)";
-    this.labelX = -20;
-    this.labelY = 16;
+    this.date = "(" + date.getFullYear() + "/" + ('0' + (Number(date.getMonth()) + 1)).slice(-2) + "/" + ('0' + date.getDate()).slice(-2) + " " + ('0' + date.getHours()).slice(-2) + ":" + ('0' + date.getMinutes()).slice(-2) + " 現在)";
+    this.labelX = 20;
+    this.labelY = 5;
     this.life = this.LIFE;
     this.size = this.SIZE;
 }
@@ -66,20 +66,44 @@ Train.prototype.arrow = function() {
 }
 
 Train.prototype.showLabel = function() {
+    if(gFullScreen){
+	return;
+    }
     push();
 
     textSize(12);
-    translate(this.labelX, this.labelY);
+    translate(this.labelX, this.labelY)
 
     //TODO:remove.only for debug
-    //fill(0, 127);
-    //rect(-5,-15,200,55);
+    fill(127, 127);
+    rect(-5,-14,60,18);
 
     fill(255);
-    //text(this.trainNumber, 0, 0);
+    text(this.trainNumber, 0, 0);
 
-    text(this.trainDirection, 0, 0);
-    text(this.terminalStation + "行き", 0, 17);
+    pop();
+}
+
+Train.prototype.showInfo = function(_labelX, _labelY) {
+    if(gFullScreen){
+	return;
+    }
+    push();
+
+    noStroke();
+    textSize(12);
+    translate(_labelX, _labelY)
+
+    //TODO:remove.only for debug
+    fill(1, 127);
+    rect(-5,-15,220,60);
+
+    fill(255);
+    textStyle(BOLD);
+    text(this.trainNumber, 0, 0);
+    textStyle(NORMAL);
+    fill(220);
+    text(this.trainDirection + " " + this.terminalStation + "行き", 0, 17);
     if(this.delay > 0){
 	fill(color(232,64,48));
 	text(this.delay + "分遅れ "　+ this.date, 0, 34);
@@ -125,6 +149,8 @@ Train.prototype.draw = function() {
     //arrow
     this.arrow();
 
+    this.showLabel();
+
     fill(col, this.life);
     ellipse(0, 0, this.size, this.size);
 
@@ -132,16 +158,6 @@ Train.prototype.draw = function() {
     this.blink();
     fill(col, this.life);
     ellipse(0, 0, this.size, this.size);
-
-    if(!gFullScreen){
-	/*
-	stroke(color(0, 163, 217));
-	line(0, 0, this.labelX, this.labelY);
-
-	noStroke();
-	*/
-	this.showLabel();
-    }
 
     pop();
 

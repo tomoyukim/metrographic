@@ -36,3 +36,7 @@ a {
     padding-left:5px;
     padding-bottom:5px;
 }
+
+#railway .selected a{
+    text-decoration:underline;
+}

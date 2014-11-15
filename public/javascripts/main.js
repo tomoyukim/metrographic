@@ -1,6 +1,7 @@
 var railway = [];
 var trains = [];
 var selected_railway = "odpt.Railway:TokyoMetro.Ginza";
+var selected_direction = ["odpt.RailDirection:TokyoMetro.Shibuya"];
 var data;
 
 var MAP_SIZE_X = 2800;
@@ -44,13 +45,18 @@ function updateTrains(msg) {
 	    terminalStation = terminalStation.japanese;
 	}
 	var odpt_railwayDirection = msg[i]['odpt:railDirection'];
-	trains.push(new Train(fromStation,
-			      toStation,
-			      msg[i]['odpt:trainNumber'],
-			      RAILWAY_DIRECTION_DATA[odpt_railwayDirection],
-			      terminalStation,
-			      msg[i]['odpt:delay'],
-			      msg[i]['dc:date']));
+	//TODO:check selected direction
+	for( var k=0; k < selected_direction.length; k++){
+	    if(odpt_railwayDirection == selected_direction[k]){
+		trains.push(new Train(fromStation,
+				      toStation,
+				      msg[i]['odpt:trainNumber'],
+				      RAILWAY_DIRECTION_DATA[odpt_railwayDirection],
+				      terminalStation,
+				      msg[i]['odpt:delay'],
+				      msg[i]['dc:date']));
+	    }
+	}
     }
 }
 
@@ -84,26 +90,20 @@ function draw() {
     for( var i=0; i < railway.length; i++){
 	railway[i].draw();
     }
+    var labelX_offset = 230;
+    var labelY = windowHeight - 60;
     for( var j=0; j < trains.length; j++){
+	if(j/6 == 1){ //line2
+	    labelX_offset = 460;
+	    labelY = windowHeight - 60;
+	} else if (j/6 == 2) {//line3(max)
+	    labelX_offset = 690;
+	    labelY = windowHeight - 60;
+	}
 	trains[j].draw();
+	trains[j].showInfo(windowWidth - labelX_offset, labelY);
+	labelY -= 65;
     }
-
-    //title
-/*    var titleX = 25;
-    var titleY = 50;
-    noStroke();
-    fill(230);
-    textFont('Helvetica');
-    textSize(32);
-    text("TIME-GRAPHIC SUBWAY", titleX, titleY);
-    textSize(12);
-    text("powered by Tokyo Metro", titleX, titleY + 15);
-
-    var a = 0;
-    for( var i=0; i < 9; i++){
-	ellipse(35 + a, 90, 20, 20);
-	a += 30;
-    }*/
 }
 
 function windowResized() {
@@ -133,22 +133,19 @@ function mouseReleased() {
 }
 
 $(function(){
+    $('#menu ul#railway li a').click(function(e){
+	$('#menu ul#railway li').removeClass("selected");
+	$(this).parent('li').addClass("selected");
+    });
     $(".select").on('click',function(event){
         event.preventDefault();
         event.stopPropagation();
 
 	selected_railway = $(this).attr('href');
+	selected_direction = $(this).attr('data-dr').split(',');
 	updateTrains(data);
 	
         return false;
-    });
-    $("#fullscreen").on('click',function(event){
-	gFullScreen = !gFullScreen;
-	if(gFullScreen){
-	    $(this).text("拡大図");
-	}else{
-	    $(this).text("俯瞰図");
-	}
     });
     
     //menu animation
