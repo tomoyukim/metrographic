@@ -1,3 +1,5 @@
+var hoveredTrainNumber = null;
+
 Train = function(_from, _to, _trainNumber, _trainDirection, _terminalStation, _delay, _date) {
     var _x, _y;
 
@@ -74,7 +76,6 @@ Train.prototype.showLabel = function() {
     textSize(12);
     translate(this.labelX, this.labelY)
 
-    //TODO:remove.only for debug
     fill(127, 127);
     rect(-5,-14,60,18);
 
@@ -86,7 +87,7 @@ Train.prototype.showLabel = function() {
 
 Train.prototype.showInfo = function(_labelX, _labelY) {
     if(gFullScreen){
-	return;
+	//return;
     }
     push();
 
@@ -94,8 +95,14 @@ Train.prototype.showInfo = function(_labelX, _labelY) {
     textSize(12);
     translate(_labelX, _labelY)
 
-    //TODO:remove.only for debug
     fill(1, 127);
+    hoveredTrainNumber = null;
+    if(_labelX - 5 < mouseX && mouseX < _labelX + 215){
+	if(_labelY - 15 < mouseY && mouseY < _labelY + 45){
+	    fill(127, 127);
+	    hoveredTrainNumber = this.trainNumber;
+	}
+    }
     rect(-5,-15,220,60);
 
     fill(255);
@@ -140,6 +147,9 @@ Train.prototype.draw = function() {
     noStroke();
 
     var col = color(0, 163, 217);
+    if(hoveredTrainNumber == this.trainNumber){
+	col = color(255, 255, 255);
+    }
     if(this.delay > 0){
 	col = color(255, 100, 100);
     }

@@ -100,9 +100,25 @@ function draw() {
 	    labelX_offset = 690;
 	    labelY = windowHeight - 60;
 	}
-	trains[j].draw();
 	trains[j].showInfo(windowWidth - labelX_offset, labelY);
+	trains[j].draw();
 	labelY -= 65;
+    }
+
+    //title
+    if(trains.length > 0){
+	noStroke();
+	labelY += 35;
+	var col;
+	for( var i=0; i < RAILWAY_DATA.length; i++){
+	    if(RAILWAY_DATA[i].odpt_railway == selected_railway){
+		col = RAILWAY_DATA[i].color;
+	    }
+	}
+	fill(col);
+	rect(windowWidth - labelX_offset, labelY, 10, 11);
+	fill(220);
+	text("列車情報", windowWidth - labelX_offset + 15, labelY + 10);
     }
 }
 
