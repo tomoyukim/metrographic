@@ -147,11 +147,11 @@ Train.prototype.draw = function() {
     noStroke();
 
     var col = color(0, 163, 217);
-    if(hoveredTrainNumber == this.trainNumber){
-	col = color(255, 255, 255);
-    }
     if(this.delay > 0){
 	col = color(255, 100, 100);
+    }
+    if(hoveredTrainNumber == this.trainNumber){
+	col = color(255, 255, 255);
     }
     fill(col, 230);
     ellipse(0, 0, this.SIZE, this.SIZE);

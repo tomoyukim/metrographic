@@ -144,6 +144,9 @@ function mousePressed() {
 }
 
 function mouseReleased() {
+    if(abs(_x - mouseX) == 0 && abs(_y - mouseY) == 0){
+	gFullScreen = !gFullScreen;
+    }
     prevX = gX;
     prevY = gY;
 }
