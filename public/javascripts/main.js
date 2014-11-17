@@ -99,6 +99,9 @@ function draw() {
 	} else if (j/6 == 2) {//line3(max)
 	    labelX_offset = 690;
 	    labelY = windowHeight - 60;
+	} else if (j/6 == 3) {
+	    labelX_offset = 920;
+	    labelY = windowHeight - 60;
 	}
 	trains[j].showInfo(windowWidth - labelX_offset, labelY);
 	trains[j].draw();
