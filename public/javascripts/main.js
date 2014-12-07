@@ -147,7 +147,7 @@ function mousePressed() {
 }
 
 function mouseReleased() {
-    if(mouseX > 250 || mouseY > 450){
+    if(mouseX > 250 || mouseY > 600){
 	if(abs(_x - mouseX) == 0 && abs(_y - mouseY) == 0){
 	    gFullScreen = !gFullScreen;
 	}
