@@ -1,201 +1,203 @@
-<head>
-  <meta charset="UTF-8"/>
-  <title>METRO GRAPHIC powered by Tokyo Metro</title>
-  <script language="javascript" src="javascripts/jquery-1.11.1.min.js"></script>
-  <script language="javascript" src="javascripts/jquery.animate-colors-min.js"></script>
-  <script language="javascript" src="javascripts/p5.min.js"></script>
-  <script src="/socket.io/socket.io.js"></script>
-  <script language="javascript" src="javascripts/data2.js"></script>
-  <script language="javascript" src="javascripts/railway.js"></script>
-  <script language="javascript" src="javascripts/train.js"></script>
-  <script language="javascript" src="javascripts/main.js"></script>
-  <link href="/stylesheets/style.css" rel="stylesheet"/>
-</head>
-<body>
-    <div id="menu">
-      <h2 id="title">METRO GRAPHIC</h2>
-      <small>powered by Tokyo Metro</small>
-      <ul id="railway">
-        <li class="selected">
-          <a href="odpt.Railway:TokyoMetro.Ginza" data-dr="odpt.RailDirection:TokyoMetro.Shibuya" class="select">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink"
-		 viewBox="0 0 10 10" width="10" height="10">
-              <rect x="0" y="1" width="9" height="9" fill="#ff9500" />
-            </svg>
-          銀座線（渋谷方面）
-          </a>
-        </li>
-        <li>
-          <a href="odpt.Railway:TokyoMetro.Ginza" data-dr="odpt.RailDirection:TokyoMetro.Asakusa" class="select">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink"
-		 viewBox="0 0 10 10" width="10" height="10">
-              <rect x="0" y="1" width="9" height="9" fill="#ff9500" />
-            </svg>
-          銀座線（浅草方面）
-          </a>
-        </li>
-        <li>
-          <a href="odpt.Railway:TokyoMetro.Marunouchi" data-dr="odpt.RailDirection:TokyoMetro.Ogikubo,odpt.RailDirection:TokyoMetro.Honancho" class="select">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink"
-		 viewBox="0 0 10 10" width="10" height="10">
-              <rect x="0" y="1" width="9" height="9" fill="#f62e36" />
-            </svg>
-          丸の内線（荻窪、方南町方面）
-          </a>
-        </li>
-        <li>
-          <a href="odpt.Railway:TokyoMetro.Marunouchi" data-dr="odpt.RailDirection:TokyoMetro.Ikebukuro,odpt.RailDirection:TokyoMetro.NakanoSakaue" class="select">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink"
-		 viewBox="0 0 10 10" width="10" height="10">
-              <rect x="0" y="1" width="9" height="9" fill="#f62e36" />
-            </svg>
-          丸の内線（中野坂上、池袋方面）
-          </a>
-        </li>
-        <li>
-          <a href="odpt.Railway:TokyoMetro.Hibiya" data-dr="odpt.RailDirection:TokyoMetro.NakaMeguro" class="select">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink"
-		 viewBox="0 0 10 10" width="10" height="10">
-              <rect x="0" y="1" width="9" height="9" fill="#b5b5ac" />
-            </svg>
-          日比谷線（中目黒方面）
-          </a>
-        </li>
-        <li>
-          <a href="odpt.Railway:TokyoMetro.Hibiya" data-dr="odpt.RailDirection:TokyoMetro.KitaSenju" class="select">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink"
-		 viewBox="0 0 10 10" width="10" height="10">
-              <rect x="0" y="1" width="9" height="9" fill="#b5b5ac" />
-            </svg>
-          日比谷線（北千住方面）
-          </a>
-        </li>
-        <li>
-          <a href="odpt.Railway:TokyoMetro.Tozai" data-dr="odpt.RailDirection:TokyoMetro.NishiFunabashi" class="select">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink"
-		 viewBox="0 0 10 10" width="10" height="10">
-              <rect x="0" y="1" width="9" height="9" fill="#009bbf" />
-            </svg>
-          東西線（西船橋方面）
-          </a>
-        </li>
-        <li>
-          <a href="odpt.Railway:TokyoMetro.Tozai" data-dr="odpt.RailDirection:TokyoMetro.Nakano" class="select">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink"
-		 viewBox="0 0 10 10" width="10" height="10">
-              <rect x="0" y="1" width="9" height="9" fill="#009bbf" />
-            </svg>
-          東西線（中野方面）
-          </a>
-        </li>
-        <li>
-          <a href="odpt.Railway:TokyoMetro.Chiyoda" data-dr="odpt.RailDirection:TokyoMetro.YoyogiUehara" class="select">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink"
-		 viewBox="0 0 10 10" width="10" height="10">
-              <rect x="0" y="1" width="9" height="9" fill="#00bb85" />
-            </svg>
-          千代田線（代々木上原方面）
-          </a>
-        </li>
-        <li>
-          <a href="odpt.Railway:TokyoMetro.Chiyoda" data-dr="odpt.RailDirection:TokyoMetro.Ayase,odpt.RailDirection:TokyoMetro.KitaAyase" class="select">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink"
-		 viewBox="0 0 10 10" width="10" height="10">
-              <rect x="0" y="1" width="9" height="9" fill="#00bb85" />
-            </svg>
-          千代田線（綾瀬、北綾瀬方面）
-          </a>
-        </li>
-        <li>
-          <a href="odpt.Railway:TokyoMetro.Yurakucho" data-dr="odpt.RailDirection:TokyoMetro.Ikebukuro,odpt.RailDirection:TokyoMetro.ShinKiba" class="select">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink"
-		 viewBox="0 0 10 10" width="10" height="10">
-              <rect x="0" y="1" width="9" height="9" fill="#c1a470" />
-            </svg>
-          有楽町線（池袋、新木場方面）
-          </a>
-        </li>
-        <li>
-          <a href="odpt.Railway:TokyoMetro.Yurakucho" data-dr="odpt.RailDirection:TokyoMetro.Wakoshi,odpt.RailDirection:TokyoMetro.KotakeMukaihara" class="select">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink"
-		 viewBox="0 0 10 10" width="10" height="10">
-              <rect x="0" y="1" width="9" height="9" fill="#c1a470" />
-            </svg>
-          有楽町線（小竹向原、和光市方面）
-          </a>
-        </li>
-        <li>
-          <a href="odpt.Railway:TokyoMetro.Hanzomon" data-dr="odpt.RailDirection:TokyoMetro.Oshiage" class="select">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink"
-		 viewBox="0 0 10 10" width="10" height="10">
-              <rect x="0" y="1" width="9" height="9" fill="#8f76d6" />
-            </svg>
-          半蔵門線（押上方面）
-          </a>
-        </li>
-        <li>
-          <a href="odpt.Railway:TokyoMetro.Hanzomon" data-dr="odpt.RailDirection:TokyoMetro.Shibuya" class="select">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink"
-		 viewBox="0 0 10 10" width="10" height="10">
-              <rect x="0" y="1" width="9" height="9" fill="#8f76d6" />
-            </svg>
-          半蔵門線（渋谷方面）
-          </a>
-        </li>
-        <li>
-          <a href="odpt.Railway:TokyoMetro.Namboku" data-dr="odpt.RailDirection:TokyoMetro.AkabaneIwabuchi,odpt.RailDirection:TokyoMetro.ShirokaneTakanawa" class="select">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink"
-		 viewBox="0 0 10 10" width="10" height="10">
-              <rect x="0" y="1" width="9" height="9" fill="#00ac9b" />
-            </svg>
-          南北線（赤羽岩淵、白金高輪方面）
-          </a>
-        </li>
-        <li>
-          <a href="odpt.Railway:TokyoMetro.Namboku" data-dr="odpt.RailDirection:TokyoMetro.Meguro" class="select">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink"
-		 viewBox="0 0 10 10" width="10" height="10">
-              <rect x="0" y="1" width="9" height="9" fill="#00ac9b" />
-            </svg>
-          南北線（目黒方面）
-          </a>
-        </li>
-        <li>
-          <a href="odpt.Railway:TokyoMetro.Fukutoshin" data-dr="odpt.RailDirection:TokyoMetro.Ikebukuro,odpt.RailDirection:TokyoMetro.Shibuya" class="select">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink"
-		 viewBox="0 0 10 10" width="10" height="10">
-              <rect x="0" y="1" width="9" height="9" fill="#9c5e31" />
-            </svg>
-          副都心線（池袋、渋谷方面）
-          </a>
-        </li>
-        <li>
-          <a href="odpt.Railway:TokyoMetro.Fukutoshin" data-dr="odpt.RailDirection:TokyoMetro.Wakoshi,odpt.RailDirection:TokyoMetro.KotakeMukaihara" class="select">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink"
-		 viewBox="0 0 10 10" width="10" height="10">
-              <rect x="0" y="1" width="9" height="9" fill="#9c5e31" />
-            </svg>
-          副都心線（小竹向原、和光市方面）
-          </a>
-        </li>
-      </ul>
-    </div>
-</body>
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>METRO GRAPHIC powered by Tokyo Metro</title>
+    <script language="javascript" src="javascripts/jquery-1.11.1.min.js"></script>
+    <script language="javascript" src="javascripts/jquery.animate-colors-min.js"></script>
+    <script language="javascript" src="javascripts/p5.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script language="javascript" src="javascripts/data2.js"></script>
+    <script language="javascript" src="javascripts/railway.js"></script>
+    <script language="javascript" src="javascripts/train.js"></script>
+    <script language="javascript" src="javascripts/main.js"></script>
+    <link href="/stylesheets/style.css" rel="stylesheet"/>
+  <body>
+      <div id="menu">
+        <h2 id="title">METRO GRAPHIC</h2>
+        <small>powered by Tokyo Metro</small>
+        <ul id="railway">
+          <li class="selected">
+            <a href="odpt.Railway:TokyoMetro.Ginza" data-dr="odpt.RailDirection:TokyoMetro.Shibuya" class="select">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   xmlns:xlink="http://www.w3.org/1999/xlink"
+   		 viewBox="0 0 10 10" width="10" height="10">
+                <rect x="0" y="1" width="9" height="9" fill="#ff9500" />
+              </svg>
+            銀座線（渋谷方面）
+            </a>
+          </li>
+          <li>
+            <a href="odpt.Railway:TokyoMetro.Ginza" data-dr="odpt.RailDirection:TokyoMetro.Asakusa" class="select">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   xmlns:xlink="http://www.w3.org/1999/xlink"
+   		 viewBox="0 0 10 10" width="10" height="10">
+                <rect x="0" y="1" width="9" height="9" fill="#ff9500" />
+              </svg>
+            銀座線（浅草方面）
+            </a>
+          </li>
+          <li>
+            <a href="odpt.Railway:TokyoMetro.Marunouchi" data-dr="odpt.RailDirection:TokyoMetro.Ogikubo,odpt.RailDirection:TokyoMetro.Honancho" class="select">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   xmlns:xlink="http://www.w3.org/1999/xlink"
+   		 viewBox="0 0 10 10" width="10" height="10">
+                <rect x="0" y="1" width="9" height="9" fill="#f62e36" />
+              </svg>
+            丸の内線（荻窪、方南町方面）
+            </a>
+          </li>
+          <li>
+            <a href="odpt.Railway:TokyoMetro.Marunouchi" data-dr="odpt.RailDirection:TokyoMetro.Ikebukuro,odpt.RailDirection:TokyoMetro.NakanoSakaue" class="select">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   xmlns:xlink="http://www.w3.org/1999/xlink"
+   		 viewBox="0 0 10 10" width="10" height="10">
+                <rect x="0" y="1" width="9" height="9" fill="#f62e36" />
+              </svg>
+            丸の内線（中野坂上、池袋方面）
+            </a>
+          </li>
+          <li>
+            <a href="odpt.Railway:TokyoMetro.Hibiya" data-dr="odpt.RailDirection:TokyoMetro.NakaMeguro" class="select">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   xmlns:xlink="http://www.w3.org/1999/xlink"
+   		 viewBox="0 0 10 10" width="10" height="10">
+                <rect x="0" y="1" width="9" height="9" fill="#b5b5ac" />
+              </svg>
+            日比谷線（中目黒方面）
+            </a>
+          </li>
+          <li>
+            <a href="odpt.Railway:TokyoMetro.Hibiya" data-dr="odpt.RailDirection:TokyoMetro.KitaSenju" class="select">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   xmlns:xlink="http://www.w3.org/1999/xlink"
+   		 viewBox="0 0 10 10" width="10" height="10">
+                <rect x="0" y="1" width="9" height="9" fill="#b5b5ac" />
+              </svg>
+            日比谷線（北千住方面）
+            </a>
+          </li>
+          <li>
+            <a href="odpt.Railway:TokyoMetro.Tozai" data-dr="odpt.RailDirection:TokyoMetro.NishiFunabashi" class="select">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   xmlns:xlink="http://www.w3.org/1999/xlink"
+   		 viewBox="0 0 10 10" width="10" height="10">
+                <rect x="0" y="1" width="9" height="9" fill="#009bbf" />
+              </svg>
+            東西線（西船橋方面）
+            </a>
+          </li>
+          <li>
+            <a href="odpt.Railway:TokyoMetro.Tozai" data-dr="odpt.RailDirection:TokyoMetro.Nakano" class="select">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   xmlns:xlink="http://www.w3.org/1999/xlink"
+   		 viewBox="0 0 10 10" width="10" height="10">
+                <rect x="0" y="1" width="9" height="9" fill="#009bbf" />
+              </svg>
+            東西線（中野方面）
+            </a>
+          </li>
+          <li>
+            <a href="odpt.Railway:TokyoMetro.Chiyoda" data-dr="odpt.RailDirection:TokyoMetro.YoyogiUehara" class="select">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   xmlns:xlink="http://www.w3.org/1999/xlink"
+   		 viewBox="0 0 10 10" width="10" height="10">
+                <rect x="0" y="1" width="9" height="9" fill="#00bb85" />
+              </svg>
+            千代田線（代々木上原方面）
+            </a>
+          </li>
+          <li>
+            <a href="odpt.Railway:TokyoMetro.Chiyoda" data-dr="odpt.RailDirection:TokyoMetro.Ayase,odpt.RailDirection:TokyoMetro.KitaAyase" class="select">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   xmlns:xlink="http://www.w3.org/1999/xlink"
+   		 viewBox="0 0 10 10" width="10" height="10">
+                <rect x="0" y="1" width="9" height="9" fill="#00bb85" />
+              </svg>
+            千代田線（綾瀬、北綾瀬方面）
+            </a>
+          </li>
+          <li>
+            <a href="odpt.Railway:TokyoMetro.Yurakucho" data-dr="odpt.RailDirection:TokyoMetro.Ikebukuro,odpt.RailDirection:TokyoMetro.ShinKiba" class="select">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   xmlns:xlink="http://www.w3.org/1999/xlink"
+   		 viewBox="0 0 10 10" width="10" height="10">
+                <rect x="0" y="1" width="9" height="9" fill="#c1a470" />
+              </svg>
+            有楽町線（池袋、新木場方面）
+            </a>
+          </li>
+          <li>
+            <a href="odpt.Railway:TokyoMetro.Yurakucho" data-dr="odpt.RailDirection:TokyoMetro.Wakoshi,odpt.RailDirection:TokyoMetro.KotakeMukaihara" class="select">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   xmlns:xlink="http://www.w3.org/1999/xlink"
+   		 viewBox="0 0 10 10" width="10" height="10">
+                <rect x="0" y="1" width="9" height="9" fill="#c1a470" />
+              </svg>
+            有楽町線（小竹向原、和光市方面）
+            </a>
+          </li>
+          <li>
+            <a href="odpt.Railway:TokyoMetro.Hanzomon" data-dr="odpt.RailDirection:TokyoMetro.Oshiage" class="select">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   xmlns:xlink="http://www.w3.org/1999/xlink"
+   		 viewBox="0 0 10 10" width="10" height="10">
+                <rect x="0" y="1" width="9" height="9" fill="#8f76d6" />
+              </svg>
+            半蔵門線（押上方面）
+            </a>
+          </li>
+          <li>
+            <a href="odpt.Railway:TokyoMetro.Hanzomon" data-dr="odpt.RailDirection:TokyoMetro.Shibuya" class="select">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   xmlns:xlink="http://www.w3.org/1999/xlink"
+   		 viewBox="0 0 10 10" width="10" height="10">
+                <rect x="0" y="1" width="9" height="9" fill="#8f76d6" />
+              </svg>
+            半蔵門線（渋谷方面）
+            </a>
+          </li>
+          <li>
+            <a href="odpt.Railway:TokyoMetro.Namboku" data-dr="odpt.RailDirection:TokyoMetro.AkabaneIwabuchi,odpt.RailDirection:TokyoMetro.ShirokaneTakanawa" class="select">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   xmlns:xlink="http://www.w3.org/1999/xlink"
+   		 viewBox="0 0 10 10" width="10" height="10">
+                <rect x="0" y="1" width="9" height="9" fill="#00ac9b" />
+              </svg>
+            南北線（赤羽岩淵、白金高輪方面）
+            </a>
+          </li>
+          <li>
+            <a href="odpt.Railway:TokyoMetro.Namboku" data-dr="odpt.RailDirection:TokyoMetro.Meguro" class="select">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   xmlns:xlink="http://www.w3.org/1999/xlink"
+   		 viewBox="0 0 10 10" width="10" height="10">
+                <rect x="0" y="1" width="9" height="9" fill="#00ac9b" />
+              </svg>
+            南北線（目黒方面）
+            </a>
+          </li>
+          <li>
+            <a href="odpt.Railway:TokyoMetro.Fukutoshin" data-dr="odpt.RailDirection:TokyoMetro.Ikebukuro,odpt.RailDirection:TokyoMetro.Shibuya" class="select">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   xmlns:xlink="http://www.w3.org/1999/xlink"
+   		 viewBox="0 0 10 10" width="10" height="10">
+                <rect x="0" y="1" width="9" height="9" fill="#9c5e31" />
+              </svg>
+            副都心線（池袋、渋谷方面）
+            </a>
+          </li>
+          <li>
+            <a href="odpt.Railway:TokyoMetro.Fukutoshin" data-dr="odpt.RailDirection:TokyoMetro.Wakoshi,odpt.RailDirection:TokyoMetro.KotakeMukaihara" class="select">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   xmlns:xlink="http://www.w3.org/1999/xlink"
+   		 viewBox="0 0 10 10" width="10" height="10">
+                <rect x="0" y="1" width="9" height="9" fill="#9c5e31" />
+              </svg>
+            副都心線（小竹向原、和光市方面）
+            </a>
+          </li>
+        </ul>
+      </div>
+  </body>
+</html>
