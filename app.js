@@ -92,7 +92,7 @@ var request = require('request');
 
 var API_ENDPOINT = 'https://api.tokyometroapp.jp/api/v2/';
 var DATAPOINTS_URL = API_ENDPOINT + 'datapoints';
-var ACCESS_TOKEN = process.env.COSUMER_KEY;
+var ACCESS_TOKEN = process.env.CONSUMER_KEY;
 
 var query = {
     'rdf:type':'odpt:Train',
